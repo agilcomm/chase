@@ -1,19 +1,38 @@
 <html>
 <head>
+<%
+Dim code
+code = request.querystring("code")
+Dim ApprovalCode
+ApprovalCode = request.querystring("ApprovalCode")
+Dim error
+error = request.querystring("error")
+Dim message
+message = request.querystring("message")
+Dim transactionid
+transactionid=request.querystring("ProcTxnID")
+Dim AVSMatch
+AVSMatch=request.querystring("AVSMatch")
+Dim CVVMatch
+CVVMatch=request.querystring("CVVMatch")
+%>
 </head>
 <body>
 <div>
 Return page
-
-</div>
-  
+<% 
+response.write "code is" & code  & "<br>"
+response.write "error is" & error  & "<br>"
+response.write "message is" & message  & "<br>"
+response.write "approval code is : " & ApprovalCode & "<br>"
+response.write "transaction id is : " & transactionid & "<br>"
+response.write "AVS match is : " & AVSMatch & "<br>"
+response.write "CVV match is : " & CVVMatch & "<br>"
+%>
   <form name="hop1" action="http://www.agilcommerce.com/" method="GET">
     <input type="hidden" name="ebcURL" value="test"><br />
   <input type="submit" value="Submit to HOP">
   </form>
-  <script type="text/javascript">
-			document.hop1.submit();
-		</script>
-  
+</div>
 </body>
 </html>
