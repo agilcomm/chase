@@ -12,7 +12,9 @@
 	<!--
 		function refresh_istore() 
         {
-		alert(window.opener.location.href);
+		alert('window.opener'+window.opener.location);
+		alert('parent'+parent.location);
+		alert('top'+top.location);
 			var rf='Y';
 			if(navigator.appName.indexOf("Microsoft Internet Explorer-IGNORE") != -1)
 			{
