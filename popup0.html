@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function fnLaunch() {
+      var aForm;
+      aForm = document.getElementById('oForm').elements;
+      var myObject = new Object();
+      myObject.firstName = aForm.oFirstName.value;
+      myObject.lastName = aForm.oLastName.value;
+      // The object "myObject" is sent to the modal window.
+      window.showModalDialog("https://agilcomm.github.io/chase/popup.html", myObject, "dialogHeight:300px; dialogLeft:200px;");
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="fnLaunch();">Launch The Dialog</button>
+  <form id="oForm">
+    First Name:
+    <input type="text" name="oFirstName" value="Jane">
+    <br>
+    Last Name:
+    <input type="text" name="oLastName" value="Smith">
+  </form>
+</body>
+
+</html>
