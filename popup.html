@@ -7,9 +7,31 @@
     var oMyObject = window.dialogArguments;
     var sFirstName = oMyObject.firstName;
     var sLastName = oMyObject.lastName;
-    window.parent.opener.location.reload(true);
-    window.close();
   </script>
+  	<script language="JavaScript">
+	<!--
+		function refresh_istore() 
+        {
+			var rf='Y';
+			if(navigator.appName.indexOf("Microsoft Internet Explorer-IGNORE") != -1)
+			{
+				rf='N';
+			}
+			if(rf=='Y')
+			{
+				window.opener.location.href = 'http://testapps.sandc.com/OA_HTML/xxscibeCCkdHdrShip.jsp?payment_opt_radio=existing_credit_card&selectPaymentTypeCode=CREDIT_CARD&selectship_method=000001_UPS_T_GND&shippingInstr1=&packingInstr1=&selectedAddress=2985396:1330098&selectedAddressBILLTO=2985398:1330098&assignmentId=1224606';
+				if (window.opener.progressWindow)
+				{
+					window.opener.progressWindow.close()
+				}
+			}else
+			{
+				alert("You might need to refresh the payment option page to load the new card upon this window close.");  
+			}
+			window.close();
+        }
+	//-->
+	</script>
   <title>dialogArguments</title>
 </head>
 
@@ -27,6 +49,9 @@
       document.write(sLastName);
     </script>
   </span>
+  <form method="post">
+		<input type="button" value="Close Window" onclick="refresh_istore()">
+	</form>
 </body>
 
 </html>
