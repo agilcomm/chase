@@ -15,6 +15,14 @@
 		alert('window.opener => '+window.opener.location);
 		alert('parent => '+parent.location);
 		alert('top => '+top.location);
+		alert('parent.document.location => '+parent.document.location);
+		alert('parent.window.document.location => '+parent.window.document.location);
+		alert('parent.window.location => '+parent.window.location);
+		alert('parent.document.location.href => '+parent.document.location.href);
+		alert('parent.document.URL; => '+ parent.document.URL;);
+		alert('document.referrer => '+document.referrer);
+		
+		
 			var rf='Y';
 			if(navigator.appName.indexOf("Microsoft Internet Explorer-IGNORE") != -1)
 			{
@@ -22,7 +30,7 @@
 			}
 			if(rf=='Y')
 			{
-				window.opener.location.href = 'http://testapps.sandc.com/OA_HTML/xxscibeCCkdHdrShip.jsp?payment_opt_radio=existing_credit_card&selectPaymentTypeCode=CREDIT_CARD&selectship_method=000001_UPS_T_GND&shippingInstr1=&packingInstr1=&selectedAddress=2985396:1330098&selectedAddressBILLTO=2985398:1330098&assignmentId=1224606';
+				window.opener.location.href = 'http://www.agilcommerce.com/';
 				if (window.opener.progressWindow)
 				{
 					window.opener.progressWindow.close()
