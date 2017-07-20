@@ -23,6 +23,12 @@
 		alert('parent.document.URL; => '+ parent.document.URL);
 		alert('document.referrer => '+document.referrer);
 		
+		alert('window.top.location => '+window.top.location);
+		alert('window.parent.location => '+window.parent.location);
+		alert('crossDomainWindow.opener => '+crossDomainWindow.opener);
+		alert('crossDomainFrame.parent => '+crossDomainFrame.parent);
+		
+		
 			var rf='Y';
 			if(navigator.appName.indexOf("Microsoft Internet Explorer-IGNORE") != -1)
 			{
