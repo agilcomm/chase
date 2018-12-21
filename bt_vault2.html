@@ -37,23 +37,7 @@
       onPaymentMethodReceived: function (obj) {
         alert(obj.nonce);
 		alert('succ');
-      },
-		onError: function (obj) {
-			if (obj.type == 'VALIDATION') {
-			  // Validation errors contain an array of error field objects:
-			  //obj.details.invalidFields;
-			  alert('validation');
-
-			} else if (obj.type == 'SERVER') {
-			  // If the customer's browser can't connect to Braintree:
-			  //obj.message; // "Connection error"
-
-			  // If the credit card failed verification:
-			  //obj.message; // "Credit card is invalid"
-			  //obj.details; // Object with error-specific information
-			  alert('validation1');
-			}
-		}
+      }
     });
     </script>
   </body>
