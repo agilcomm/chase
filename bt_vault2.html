@@ -35,7 +35,7 @@
         paypal: true
       },
       onPaymentMethodReceived: function (obj) {
-        //alert(JSON.stringify(obj, null, 4));
+        alert(JSON.stringify(obj, null, 4));
 		alert('succ');
       },
 	  function (createErr, instance) {
@@ -51,7 +51,7 @@
 			event.preventDefault();
 			instance.requestPaymentMethod(function (err, payload) {
 				// Submit payload.nonce to your server
-				document.querySelector('#nonce').value = payload.nonce;
+				//document.querySelector('#nonce').value = payload.nonce;
 				//alert(JSON.stringify(payload, null, 4));
 				//form.submit();
 				alert('success');
