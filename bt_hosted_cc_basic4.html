@@ -14,14 +14,19 @@
 
       <label for="expiration-date">Expiration Date</label>
       <div id="expiration-date"></div>
-
-	    <div id="paypal-button"></div>
+	    
       <input type="submit" value="Pay" disabled />
 	    
 	
     </form>
 
-    
+        <form action="/" id="my-sample-form" method="post">
+      <div id="paypal-button"></div>
+	    
+      <input type="submit" value="Pay using paypal"/>
+	    
+	
+    </form>
     <script src="https://js.braintreegateway.com/web/3.40.0/js/hosted-fields.min.js"></script>
 	  
 	<!-- Load PayPal's checkout.js Library. -->
@@ -103,24 +108,8 @@
             });
           }, false);
         });
-      });
-    </script>
-
-	  <script>
-// Create a client.
-braintree.client.create({
-  authorization: CLIENT_AUTHORIZATION
-}, function (clientErr, clientInstance) {
-
-  // Stop if there was a problem creating the client.
-  // This could happen if there is a network error or if the authorization
-  // is invalid.
-  if (clientErr) {
-    console.error('Error creating client:', clientErr);
-    return;
-  }
-
-  // Create a PayPal Checkout component.
+	      
+	        // Create a PayPal Checkout component.
   braintree.paypalCheckout.create({
     client: clientInstance
   }, function (paypalCheckoutErr, paypalCheckoutInstance) {
@@ -164,8 +153,10 @@ braintree.client.create({
     });
 
   });
+      });
+    </script>
 
-});
+
 	  </script>
   </body>
 </html>
