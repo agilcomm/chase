@@ -38,27 +38,6 @@
         alert(obj);
 		alert('succ');
       },
-	  function (createErr, instance) {
-		if (createErr) {
-		// An error in the create call is likely due to
-		// incorrect configuration values or network issues.
-		// An appropriate error will be shown in the UI.
-		//console.error(createErr);
-		alert('erro');
-		return;
-		}
-		  button.addEventListener('click', function () {
-			event.preventDefault();
-			instance.requestPaymentMethod(function (err, payload) {
-				// Submit payload.nonce to your server
-				//document.querySelector('#nonce').value = payload.nonce;
-				//alert(JSON.stringify(payload, null, 4));
-				//form.submit();
-				alert('success');
-		  });
-		  alert('success1');
-		});
-		},
 		onError: function (obj) {
 			if (obj.type == 'VALIDATION') {
 			  // Validation errors contain an array of error field objects:
