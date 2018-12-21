@@ -98,8 +98,11 @@
 		  //vault: true,
 		  //cardholderName: 'First Last',
 		  billingAddress: {
-		    postalCode: '11111',
-			streetAddress: '123 Street'
+		        streetAddress: '123 Street',
+    extendedAddress: 'Unit 1',
+    // valid country names and codes can be found here:
+    // https://developers.braintreepayments.com/reference/general/countries/ruby#list-of-countries
+    countryName: 'United States'
 		  }
 		}, function (tokenizeErr, payload) {
 		  if (tokenizeErr) {
