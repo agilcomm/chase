@@ -35,7 +35,7 @@
         paypal: true
       },
       onPaymentMethodReceived: function (obj) {
-        alert(obj);
+        alert(obj.nonce);
 		alert('succ');
       },
 		onError: function (obj) {
