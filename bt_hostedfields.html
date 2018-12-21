@@ -157,6 +157,7 @@
       onAuthorize: function (data, actions) {
         return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
           // Submit `payload.nonce` to your server.
+		alert('Got a nonce: ' + payload.nonce);
         });
       },
 
