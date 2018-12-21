@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+  </head>
+  <body>
+  <script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+
+
+	  </script>
+    <form action="/create-transaction" id="my-sample-form" method="post">
+      <label for="card-number">Card Number</label>
+      <div id="card-number"></div>
+
+      <label for="cvv">CVV</label>
+      <div id="cvv"></div>
+
+      <label for="expiration-date">Expiration Date</label>
+      <div id="expiration-date"></div>
+
+      <input type="submit" value="Pay" />
+    </form>
+	
+	  <form id="merchant-form" action="/create-transaction" method="post">
+      <div id="paypal-container"></div>
+      <input type="submit" value="Submit" />
+    </form>
+	    <script type="text/javascript">
+	alert('test1');
+    braintree.setup("sandbox_bypk477j_ddv9f2nc83symtnw", "custom", {
+      paypal: {
+        container: "paypal-container",
+        singleUse: false,
+        billingAgreementDescription: 'Your agreement description',
+        locale: 'en_US',
+        enableShippingAddress: true,
+        shippingAddressOverride: {
+          recipientName: 'Scruff McGruff',
+          streetAddress: '1234 Main St.',
+          extendedAddress: 'Unit 1',
+          locality: 'Chicago',
+          countryCodeAlpha2: 'US',
+          postalCode: '60652',
+          region: 'IL',
+          phone: '123.456.7890',
+          editable: false
+        }
+      },
+      dataCollector: {
+        paypal: true
+      },
+      onPaymentMethodReceived: function (obj) {
+	    alert('test');
+        alert(obj.nonce);
+      }
+    });
+    </script>
+    <script>
+	var submitBtn = document.getElementById('my-submit');
+var form = document.getElementById('my-sample-form');
+
+braintree.client.create({
+  authorization: 'sandbox_bypk477j_ddv9f2nc83symtnw'
+}, clientDidCreate);
+
+function clientDidCreate(err, client) {
+  braintree.hostedFields.create({
+    client: client,
+    styles: {
+      'input': {
+        'font-size': '16pt',
+        'color': '#3A3A3A'
+      },
+
+      '.number': {
+        'font-family': 'monospace'
+      },
+
+      '.valid': {
+        'color': 'green'
+      }
+    },
+    fields: {
+      number: {
+        selector: '#card-number'
+      },
+      cvv: {
+        selector: '#cvv'
+      },
+      expirationDate: {
+        selector: '#expiration-date'
+      }
+    }
+  }, hostedFieldsDidCreate);
+}
+
+function hostedFieldsDidCreate(err, hostedFields) {
+  submitBtn.addEventListener('click', submitHandler.bind(null, hostedFields));
+  submitBtn.removeAttribute('disabled');
+}
+
+function submitHandler(hostedFields, event) {
+  event.preventDefault();
+  submitBtn.setAttribute('disabled', 'disabled');
+
+  hostedFields.tokenize(function (err, payload) {
+    if (err) {
+      submitBtn.removeAttribute('disabled');
+      console.error(err);
+    } else {
+      form['payment_method_nonce'].value = payload.nonce;
+      form.submit();
+    }
+  });
+}
+</script>
+    
+
+  </body>
+</html>
