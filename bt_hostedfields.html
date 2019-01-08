@@ -223,7 +223,7 @@
       onAuthorize: function (data, actions) {
         return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
           // Submit `payload.nonce` to your server.
-		alert(' Got nonce:' + payload.nonce + 'Got Name:'+payload.firstName +' '+ payload.lastName +' '+ payload.email+' '+'Got a data: ' + JSON.stringify(data) +' Got payload:' + JSON.stringify(payload)  );
+		alert(' Got nonce:' + payload.nonce + 'Got Name:'+payload.details.firstName +' '+ payload.details.lastName +' '+ payload.details.email+' '+'Got a data: ' + JSON.stringify(data) +' Got payload:' + JSON.stringify(payload)  );
 		//JSON.stringify(data, 0, 2)
 		//alert('Got a nonce: ' + payload.lastFour);
         });
